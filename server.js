@@ -7,10 +7,10 @@ import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
-import path from "path";
+// import path from "path";
 
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+// import { fileURLToPath } from 'url';
+// import { dirname } from 'path';
 
 
 //configure env
@@ -19,8 +19,8 @@ dotenv.config();
 //databse config
 connectDB();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
 //rest object
 const app = express();
@@ -38,11 +38,9 @@ app.use("/api/v1/product", productRoutes);
 //PORT
 const PORT = process.env.PORT || 8000;
 
-app.get("/", (req, res) => {
-  app.use(express.static(path.resolve(__dirname, "client", "build")));
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
-
+app.get('/', (req, res) =>{
+  res.send("Welcome")
+})
 
 
 //run listen
